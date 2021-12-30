@@ -1,0 +1,29 @@
+uuid: 5f9f2dd2-b361-42e5-a418-92df3e6aed41
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.advanced_page.body
+    - node.type.advanced_page
+  module:
+    - text
+    - user
+id: node.advanced_page.default
+targetEntityType: node
+bundle: advanced_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

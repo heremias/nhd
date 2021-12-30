@@ -1,0 +1,14 @@
+uuid: 8d6a4608-1cf5-4744-9c68-53470c8236f7
+name: 'YMCA of San Diego County'
+mail: jeremy.evans@ymca.net
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

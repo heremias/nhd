@@ -1,0 +1,113 @@
+FROM php:7.4-apache
+
+# Setting doc root
+ARG docroot=/var/www/drupal/web
+ENV APACHE_DOCUMENT_ROOT $docroot
+RUN echo "Setting docroot to: $APACHE_DOCUMENT_ROOT"
+RUN sed -ri -e 's!/var/www/html!/var/www/drupal/web!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!/var/www/drupal/web!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# install the PHP extensions we need
+RUN set -ex; \
+	\
+	if command -v a2enmod; then \
+		a2enmod rewrite; \
+	fi; \
+
+	if ! command -v gpg > /dev/null; then \
+		apt-get update; \
+		apt-get install -y --no-install-recommends \
+			gnupg2 \
+			dirmngr \
+		; \
+		rm -rf /var/lib/apt/lists/*; \
+  fi ; \
+
+	\
+	savedAptMark="$(apt-mark showmanual)"; \
+	\
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+        autoconf \
+        build-essential \
+        apt-utils \
+		zlib1g-dev \
+        libzip-dev \
+        unzip \
+        zip \
+        libmagick++-dev \
+        libmagickwand-dev \
+        libpq-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        libonig-dev \
+        libsqlite3-dev \
+        libsqlite3-0 \
+        sqlite3 \
+		git \
+		wget; \
+        docker-php-ext-configure gd --with-freetype --with-jpeg --enable-gd; \
+        docker-php-ext-install gd opcache zip pdo_sqlite; \
+        pecl install imagick; \
+        docker-php-ext-enable imagick; \
+# reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
+	apt-mark auto '.*' > /dev/null; \
+	apt-mark manual $savedAptMark; \
+	ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
+		| awk '/=>/ { print $3 }' \
+		| sort -u \
+		| xargs -r dpkg-query -S \
+		| cut -d: -f1 \
+		| sort -u \
+		| xargs -rt apt-mark manual; \
+	\
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get -y install sudo
+# set recommended PHP.ini settings
+# see https://secure.php.net/manual/en/opcache.installation.php
+RUN { \
+		echo 'opcache.memory_consumption=128'; \
+		echo 'opcache.interned_strings_buffer=8'; \
+		echo 'opcache.max_accelerated_files=4000'; \
+		echo 'opcache.revalidate_freq=60'; \
+		echo 'opcache.fast_shutdown=1'; \
+		echo 'opcache.enable_cli=1'; \
+	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+
+RUN . ~/.profile
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -- --filename=composer
+
+# Create directories for Drupal
+RUN mkdir -p /tmp/drupal && chown www-data:www-data /tmp/drupal
+RUN chown www-data:www-data /var/www --recursive
+
+WORKDIR /var/www
+
+# Config
+ENV DOCROOT=/var/www/drupal/web
+COPY build.sh /var/www
+COPY mods.sh /var/www
+COPY setup.sh /var/www
+COPY drushcp.sh /var/www
+COPY dsync.sh /var/www
+RUN chmod 777 build.sh
+RUN chmod 777 mods.sh
+RUN chmod 777 setup.sh
+RUN chmod 777 drushcp.sh
+RUN chmod 777 dsync.sh
+COPY .htaccess /var/www
+# node & yarn
+RUN apt-get update && apt-get install -y nodejs npm
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+
+RUN npm i -g yarn
+RUN yarn --version
+RUN node --version
+
+#EXPOSE 80
+
