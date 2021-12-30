@@ -1,4 +1,4 @@
-# This workflow will build and push an application to a Azure Kubernetes Service (AKS) cluster when you push your code
+# This test workflow will build and push an application to a Azure Kubernetes Service (AKS) cluster when you push your code
 #
 # This workflow assumes you have already created the target AKS cluster and have created an Azure Container Registry (ACR)
 # For instructions see https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
