@@ -36,4 +36,5 @@ composer require drupal/config_split:2.0.x-dev
 composer require drupal/gutenberg_bs_blocks:1.0.0-rc1
 composer require drupal/address
 composer require drupal/react_webform_backend:^1.0@beta
-composer require drupal/gin:^3.0@beta
+composer require drupal/gin_toolbar:1.x-dev'
+composer require drupal/gin:3.x-dev@dev
