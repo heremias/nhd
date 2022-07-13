@@ -6,10 +6,8 @@ composer require drupal/cdn
 composer require drupal/stage_file_proxy
 composer require drupal/fontawesome
 composer require drupal/advagg
-composer require drupal/bootstrap_library
 composer require drupal/media_library_theme_reset
 composer require drupal/field_group
-composer require drupal/bootstrap_layouts
 composer require drupal/layout_builder_admin_theme
 composer require drupal/webform
 composer require drupal/views_taxonomy_term_name_depth
@@ -31,12 +29,11 @@ composer require drupal/svg_image
 composer require drupal/image_widget_crop
 composer require drupal/focal_point
 composer require drupal/crop
-composer require drupal/bootstrap_layout_builder
-composer require drupal/bootstrap_styles
 composer require drupal/layout_builder_base:1.x-dev
-composer require drupal/layout_builder_blocks
 composer require drupal/layout_builder_styles:1.x-dev
 composer require drupal/config_filter
 composer require drupal/config_split:2.0.x-dev
 composer require drupal/gutenberg_bs_blocks:1.0.0-rc1
 composer require drupal/address
+composer require drupal/react_webform_backend:^1.0@beta
+composer require drupal/gin:^3.0@beta
