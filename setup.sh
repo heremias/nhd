@@ -36,5 +36,3 @@ drush en -y gutenberg_bs_blocks
 drush en -y address
 drush en -y gin_toolbar
 drush en -y react_webform_backend
-cd /var/www/drupal/web/sites/default
-chmod 777 -R files

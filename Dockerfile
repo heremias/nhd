@@ -28,29 +28,30 @@ RUN set -ex; \
 	\
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
-        autoconf \
-        build-essential \
-        apt-utils \
+    autoconf \
+    build-essential \
+    apt-utils \
 		zlib1g-dev \
-        libzip-dev \
-        unzip \
-        zip \
-        libmagick++-dev \
-        libmagickwand-dev \
-        libpq-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
-        libonig-dev \
-        libsqlite3-dev \
-        libsqlite3-0 \
-        sqlite3 \
+    libzip-dev \
+    unzip \
+    zip \
+    libmagick++-dev \
+    libmagickwand-dev \
+    libpq-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libonig-dev \
+    sqlite3 \
+    sqlitebrowser \
+    libsqlite3-dev \
+    libsqlite3-0 \
 		git \
 		wget; \
-        docker-php-ext-configure gd --with-freetype --with-jpeg --enable-gd; \
-        docker-php-ext-install gd opcache zip pdo_sqlite; \
-        pecl install imagick; \
-        docker-php-ext-enable imagick; \
+    docker-php-ext-configure gd --with-freetype --with-jpeg --enable-gd; \
+    docker-php-ext-install gd opcache zip pdo_sqlite; \
+    pecl install imagick; \
+    docker-php-ext-enable imagick; \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
 	apt-mark manual $savedAptMark; \

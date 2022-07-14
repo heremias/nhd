@@ -1,3 +1,4 @@
-docker ps | grep 'base' | awk '{print $1}' > cid.txt
+docker ps | grep 'ylocal' | awk '{print $1}' > cid.txt
 cid=$(<cid.txt)
-docker cp $cid:/var/www/drupal/web/sites/default/files/config*/sync/config.tar ~/nearly-headless/local
+docker exec $cid /bin/sh -c "/var/www/drushcp.sh"
+docker cp $cid:/var/www/drupal/config.tar ~/config.tar

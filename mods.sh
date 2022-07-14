@@ -36,5 +36,25 @@ composer require drupal/config_split:2.0.x-dev
 composer require drupal/gutenberg_bs_blocks:1.0.0-rc1
 composer require drupal/address
 composer require drupal/react_webform_backend:^1.0@beta
-composer require drupal/gin_toolbar:1.x-dev'
+composer require drupal/gin_toolbar:1.x-dev
 composer require drupal/gin:3.x-dev@dev
+composer require drupal/shield
+composer require drupal/blazy
+composer require drupal/field_inheritance
+composer require drupal/gatsby:^2.0@RC
+composer require drupal/geolocation
+composer require drupal/addtocal
+composer require drupal/feeds_ex:^1.0@beta
+composer require drupal/recurring_events
+composer require drupal/search_api
+composer require drupal/slick
+composer require drupal/facets
+composer require drupal/jsonapi_extras:^3.20
+composer require drupal/selective_better_exposed_filters
+composer require drupal/views_block_exposed_filter_block
+composer require drupal/views_data_export
+composer require drupal/views_reference_field
+composer require drupal/video_embed_field
+composer require drupal/video_embed_media
+cd /var/www/drupal/web/sites/default
+chmod 777 -R files

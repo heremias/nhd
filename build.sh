@@ -24,6 +24,8 @@ chmod -R 775 /var/www/drupal/drupal.sqlite
 mv /var/www/mods.sh /var/www/drupal/mods.sh
 mv /var/www/setup.sh /var/www/drupal/setup.sh
 
+cd /var/www/drupal/web/sites/default
+chmod 777 -R files
 cd /var/www/drupal
-./mods.sh
-./setup.sh
+drush uli
+
