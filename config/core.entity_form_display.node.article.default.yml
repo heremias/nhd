@@ -1,4 +1,4 @@
-uuid: 36a6b44b-e08c-44f5-b1fc-2d9bc8080838
+uuid: cf8f4bce-0d7a-4553-a1d0-8ac59d999ec6
 langcode: en
 status: true
 dependencies:
@@ -11,9 +11,16 @@ dependencies:
     - node.type.article
   module:
     - comment
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 _core:
   default_config_hash: Pzq9mzrsfoPf775qgEU_SUbHSro9pv1ga-Euh1Ykd_k
 id: node.article.default
@@ -60,6 +67,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
     third_party_settings: {  }
   path:
     type: path

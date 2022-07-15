@@ -1,4 +1,4 @@
-uuid: 59c6662f-404c-4507-86e6-393ded4845f0
+uuid: d85ee155-ee3e-4a94-bf93-ae636dbe0497
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,15 @@ dependencies:
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - field_layout
     - image
+    - layout_discovery
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 _core:
   default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
 id: user.user.default
@@ -35,4 +42,5 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

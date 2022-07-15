@@ -1,4 +1,4 @@
-uuid: b10b2cc4-bf62-40c4-ac22-a0807af337f5
+uuid: 4742a887-6ed8-48c2-9d5b-74f5dfae8099
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,8 @@ dependencies:
     - comment
     - contact
     - filter
+    - fontawesome
+    - media
     - search
     - shortcut
     - system
@@ -20,9 +22,11 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access fontawesome additional settings'
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
+  - 'view media'

@@ -1,4 +1,3 @@
-'system.site:uuid': ed5bcc54-e32e-4b14-a475-4aec9c25a897
+'system.site:uuid': f44fc0f3-aebd-4fe5-a28a-579c65087961
 
-'system.site:uuid': ed5bcc54-e32e-4b14-a475-4aec9c25a897
-
+Error: Call to undefined method GuzzleHttp\Utils::chooseHandler() in GuzzleHttp\choose_handler() (line 61 of /root/.composer/vendor/guzzlehttp/guzzle/src/functions.php).
