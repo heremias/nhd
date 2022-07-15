@@ -5,18 +5,24 @@ tar -xvf config.tar -C ~/nhd/config
 docker ps | grep 'DEV' | awk '{print $1}' > cid.txt
 cid=$(<cid.txt)
 docker exec $cid /bin/sh -c "/var/www/drupal/getuuid.sh" > uuid.txt
-sed -n 1p uuid.txt > uudi.txt
-sed -ri -e 's!'\''system.site:uuid'\'': !!g' uudi.txt
+sed -i .bak -n 1p uuid.txt
+sed -ri -e 's!'\''system.site:uuid'\'': !!g' uuid.txt
 cd config
 sed -n 4p system.site.yml > uid.txt
 sed -ri -e 's!uuid: !!g' uid.txt
-mv uid.txt ../
 cd ../
-uudi=$(<uudi.txt)
+mv uuid.txt config/uuid.txt
+cd config
+uuid=$(<uuid.txt)
 uid=$(<uid.txt)
-if test $uudi = $uid
+if test $uuid = $uid
 then
-  echo "Same"
+  echo "Same $uid"
   else echo "Not same"
 fi
-echo Bye!
+echo "Diff $uuid"
+sed -i .bak "4s/$uid/$uuid/" ~/nhd/config/system.site.yml
+tar cvf config.tar *.*
+mv config.tar ../
+cd ../
+docker cp ~/nhd/config.tar $cid:/var/www/config.tar
