@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/heremias/ystage
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "c3e61f5884370fcde52d4e28ce73e1e9732f25bd"
+
+imagePullSecrets:
+  - name: redwoods
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+configMap:
+  name: reactconfig
+
+ingress:
+  enabled: false
