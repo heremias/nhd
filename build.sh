@@ -23,6 +23,7 @@ chown -R :www-data /var/www/drupal
 chmod -R 775 /var/www/drupal/drupal.sqlite
 mv /var/www/mods.sh /var/www/drupal/mods.sh
 mv /var/www/setup.sh /var/www/drupal/setup.sh
+mv /var/www/getuuid.sh /var/www/drupal/getuuid.sh
 
 cd /var/www/drupal/web/sites/default
 chmod 777 -R files
