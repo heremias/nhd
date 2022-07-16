@@ -57,6 +57,6 @@ composer require drupal/views_reference_field
 composer require drupal/video_embed_field
 composer require drupal/video_embed_media
 composer require drupal/static_suite:^1.1@alpha
-composer require drupal/recurring_events:^2.0@RC
+composer require drupal/recurring_events:^2.0.x-dev
 cd /var/www/drupal/web/sites/default
 chmod 777 -R files

@@ -86,33 +86,19 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 # Create directories for Drupal
 RUN mkdir -p /tmp/drupal && chown www-data:www-data /tmp/drupal
 RUN chown www-data:www-data /var/www --recursive
-
 WORKDIR /var/www
 
 # Config
 ENV DOCROOT=/var/www/drupal/web
 COPY build.sh /var/www
-COPY mods.sh /var/www
-COPY setup.sh /var/www
-COPY drushcp.sh /var/www
-COPY dsync.sh /var/www
-COPY getuuid.sh /var/www
-COPY pushcon.sh /var/www
 RUN chmod 777 build.sh
-RUN chmod 777 mods.sh
-RUN chmod 777 setup.sh
-RUN chmod 777 drushcp.sh
-RUN chmod 777 dsync.sh
-RUN chmod 777 getuuid.sh
-RUN chmod 777 pushcon.sh
 COPY .htaccess /var/www
+
 # node & yarn
 RUN apt-get update && apt-get install -y nodejs npm
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-
 RUN npm i -g yarn
-RUN yarn --version
-RUN node --version
+
 RUN ./build.sh
 
 #EXPOSE 80

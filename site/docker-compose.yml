@@ -15,7 +15,7 @@ services:
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
-    image: wodby/drupal-php:$PHP_TAG
+    image: ghcr.io/heremias/y-update-y-master:latest
     container_name: "${PROJECT_NAME}_php"
     environment:
       SSMTP_MAILHUB: mailhog:1025
