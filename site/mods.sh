@@ -40,12 +40,12 @@ composer require drupal/gin_toolbar:1.x-dev
 composer require drupal/gin:3.x-dev@dev
 composer require drupal/shield
 composer require drupal/blazy
-composer require drupal/field_inheritance
+composer require drupal/field_inheritance:2.0.x-dev
 composer require drupal/gatsby:^2.0@RC
 composer require drupal/geolocation
 composer require drupal/addtocal
 composer require drupal/feeds_ex:^1.0@beta
-composer require drupal/recurring_events
+composer require drupal/recurring_events:2.0.x-dev
 composer require drupal/search_api
 composer require drupal/slick
 composer require drupal/facets
@@ -58,5 +58,17 @@ composer require drupal/video_embed_field
 composer require drupal/video_embed_media
 composer require drupal/static_suite:^1.1@alpha
 composer require drupal/recurring_events:^2.0.x-dev
+composer require drupal/paragraphs
+composer require drupal/layout_paragraphs:^2.0@beta
+composer require drupal/entity_usage:^2.0@beta
+composer require drupal/component:^1.0@RC
+composer require drupal/typed_data:1.x-dev
+composer require drupal/graphql:^4.3
+composer require drupal/elementree:^2.1
+composer require drupal/js_component:^2.0@alpha
+composer require drupal/cl_components:^1.0@beta
+composer require drupal/graphql_export:^1.0@alpha
+composer require drupal/decoupled_pages:^1.0
+
 cd /var/www/drupal/web/sites/default
 chmod 777 -R files
