@@ -92,7 +92,6 @@ WORKDIR /var/www
 ENV DOCROOT=/var/www/drupal/web
 COPY build.sh /var/www
 RUN chmod 777 build.sh
-RUN chmod 777 getuuid.sh
 
 COPY .htaccess /var/www
 
