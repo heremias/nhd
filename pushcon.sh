@@ -2,7 +2,7 @@ cd config
 rm -rf *.*
 cd -
 tar -xvf config.tar -C ~/nhd/config
-docker ps | grep 'DEV' | awk '{print $1}' > cid.txt
+docker ps | grep 'BASE' | awk '{print $1}' > cid.txt
 cid=$(<cid.txt)
 docker exec $cid /bin/sh -c "/var/www/drupal/getuuid.sh" > uuid.txt
 sed -i .bak -n 1p uuid.txt
