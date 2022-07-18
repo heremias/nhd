@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.1.8-apache
 
 # Setting doc root
 ARG docroot=/var/www/drupal/web
@@ -92,7 +92,6 @@ WORKDIR /var/www
 ENV DOCROOT=/var/www/drupal/web
 COPY build.sh /var/www
 RUN chmod 777 build.sh
-RUN chmod 777 getuuid.sh
 
 COPY .htaccess /var/www
 
