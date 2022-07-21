@@ -2,7 +2,7 @@ composer config -g allow-plugins.composer/installers true
 composer config -g allow-plugins.drupal/core-composer-scaffold true
 composer config -g allow-plugins.drupal/core-project-message true
 composer config -g allow-plugins.oomphinc/composer-installers-extender true
-composer create-project drupal/recommended-project:9.4.2 drupal
+composer create-project drupal/recommended-project:9.4.3 drupal
 ln -s /root/.composer/vendor/bin/drush /usr/local/bin/drush
 
 composer global require drush/drush
